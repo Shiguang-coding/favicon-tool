@@ -103,7 +103,7 @@ python -m http.server 8000
 
 点击下方按钮，自动完成部署：
 
-https://vercel.com/button
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FShiguang-coding%2Ffavicon-tool)
 
 #### 方法二：通过 Vercel CLI 部署
 
