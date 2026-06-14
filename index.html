@@ -3,365 +3,672 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Favicon 工坊 · 双模式图标下载器</title>
-    <!-- favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23667eea'/%3E%3Cstop offset='100%25' style='stop-color:%23764ba2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='5' y='5' width='90' height='90' rx='20' fill='url(%23grad)'/%3E%3Crect x='18' y='18' width='64' height='64' rx='12' fill='white'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='42' font-weight='bold' font-family='Arial' fill='url(%23grad)'%3EF%3C/text%3E%3C/svg%3E">
-    <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23667eea'/%3E%3Cstop offset='100%25' style='stop-color:%23764ba2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='5' y='5' width='90' height='90' rx='20' fill='url(%23grad)'/%3E%3Crect x='18' y='18' width='64' height='64' rx='12' fill='white'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='42' font-weight='bold' font-family='Arial' fill='url(%23grad)'%3EF%3C/text%3E%3C/svg%3E">
+    <title>Favicon 工坊 · 图标下载器</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&family=Press+Start+2P&family=Space+Mono:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='5' y='5' width='90' height='90' rx='20' fill='%23c2694a'/%3E%3Crect x='18' y='18' width='64' height='64' rx='12' fill='white'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='42' font-weight='bold' font-family='Arial' fill='%23c2694a'%3EF%3C/text%3E%3C/svg%3E">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ═══════ DEFAULT: 复古街机 ═══════ */
+        :root {
+            --bg: #1a1147;
+            --surface: #221658;
+            --surface-dim: #2d1f6e;
+            --border: rgba(0, 240, 255, 0.2);
+            --border-light: rgba(0, 240, 255, 0.1);
+            --text: #e0e0ff;
+            --text-secondary: #a0a0d0;
+            --text-muted: #6060a0;
+            --accent: #00f0ff;
+            --accent-hover: #00c8d4;
+            --accent-light: rgba(0, 240, 255, 0.1);
+            --accent-glow: rgba(0, 240, 255, 0.3);
+            --success: #39ff14;
+            --success-bg: rgba(57, 255, 20, 0.1);
+            --error: #ff2d7b;
+            --error-bg: rgba(255, 45, 123, 0.1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+            --display-font: 'Press Start 2P', monospace;
+            --body-font: 'Space Mono', 'IBM Plex Mono', monospace;
+            --mono-font: 'Space Mono', 'IBM Plex Mono', monospace;
         }
 
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            min-height: 100vh;
-            padding: 1.5rem;
+        /* ═══════ 温暖工坊 ═══════ */
+        body[data-theme="workshop"] {
+            --bg: #f5f0eb;
+            --surface: #ffffff;
+            --surface-dim: #ede8e2;
+            --border: #e0d8cf;
+            --border-light: #ece6de;
+            --text: #1a1612;
+            --text-secondary: #6b5e52;
+            --text-muted: #9c8e80;
+            --accent: #c2694a;
+            --accent-hover: #a8583c;
+            --accent-light: rgba(194, 105, 74, 0.08);
+            --accent-glow: rgba(194, 105, 74, 0.15);
+            --success: #3d8b5e;
+            --success-bg: rgba(61, 139, 94, 0.08);
+            --error: #c24a4a;
+            --error-bg: rgba(194, 74, 74, 0.08);
+            --display-font: 'Space Grotesk', sans-serif;
+            --body-font: 'DM Sans', system-ui, sans-serif;
+            --mono-font: 'IBM Plex Mono', monospace;
+        }
+        body[data-theme="workshop"] .header h1 { text-shadow: none; }
+        body[data-theme="workshop"] .header h1 em { text-shadow: none; }
+        body[data-theme="workshop"] .eyebrow { letter-spacing: 0.12em; }
+        body[data-theme="workshop"] .icon-box { border: 1px solid var(--border-light); box-shadow: none; border-radius: var(--radius); }
+        body[data-theme="workshop"] .card { overflow: visible; }
+        body[data-theme="workshop"] .card::after { display: none; }
+        body[data-theme="workshop"] .fetch-btn { text-transform: none; letter-spacing: normal; }
+        body[data-theme="workshop"] .preset.active, body[data-theme="workshop"] .fpill.active { box-shadow: none; }
+
+        /* ═══════ 紫色渐变 ═══════ */
+        body[data-theme="purple"] {
+            --bg: #667eea;
+            --surface: rgba(255,255,255,0.92);
+            --surface-dim: rgba(255,255,255,0.6);
+            --border: rgba(255,255,255,0.35);
+            --border-light: rgba(255,255,255,0.2);
+            --text: #1f2937;
+            --text-secondary: #4b5563;
+            --text-muted: #6b7280;
+            --accent: #667eea;
+            --accent-hover: #5a67d8;
+            --accent-light: rgba(102, 126, 234, 0.1);
+            --accent-glow: rgba(102, 126, 234, 0.2);
+            --success: #059669;
+            --success-bg: rgba(5, 150, 105, 0.1);
+            --error: #dc2626;
+            --error-bg: rgba(220, 38, 38, 0.1);
+        }
+        body[data-theme="purple"] { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        body[data-theme="purple"] .card { backdrop-filter: blur(12px); }
+        body[data-theme="purple"] .eyebrow { color: rgba(255,255,255,0.7); }
+        body[data-theme="purple"] .header h1 { color: white; }
+        body[data-theme="purple"] .header h1 em { color: #fbbf24; }
+        body[data-theme="purple"] .header-sub { color: rgba(255,255,255,0.8); }
+        body[data-theme="purple"] .foot { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.15); }
+        body[data-theme="purple"] .foot a { color: rgba(255,255,255,0.7); }
+        body[data-theme="purple"] .foot a:hover { color: white; }
+
+        /* ═══════ 暗夜霓虹 ═══════ */
+        body[data-theme="neon"] {
+            --bg: #0c0c1d;
+            --surface: #14142b;
+            --surface-dim: #1a1a36;
+            --border: rgba(139, 92, 246, 0.15);
+            --border-light: rgba(139, 92, 246, 0.08);
+            --text: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent: #8b5cf6;
+            --accent-hover: #7c3aed;
+            --accent-light: rgba(139, 92, 246, 0.12);
+            --accent-glow: rgba(139, 92, 246, 0.25);
+            --success: #10b981;
+            --success-bg: rgba(16, 185, 129, 0.12);
+            --error: #ef4444;
+            --error-bg: rgba(239, 68, 68, 0.12);
+        }
+        body[data-theme="neon"] .icon-box {
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.2), 0 0 60px rgba(236, 72, 153, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.3);
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
+        /* ═══════ 日式侘寂 ═══════ */
+        body[data-theme="wabisabi"] {
+            --bg: #e8e0d4;
+            --surface: #f2ede6;
+            --surface-dim: #ddd5c8;
+            --border: #c8bfb0;
+            --border-light: #d8d0c4;
+            --text: #2c2c2c;
+            --text-secondary: #6a6258;
+            --text-muted: #9a9088;
+            --accent: #7d8a6e;
+            --accent-hover: #6a775c;
+            --accent-light: rgba(125, 138, 110, 0.1);
+            --accent-glow: rgba(125, 138, 110, 0.15);
+            --success: #7d8a6e;
+            --success-bg: rgba(125, 138, 110, 0.1);
+            --error: #b07060;
+            --error-bg: rgba(176, 112, 96, 0.1);
+            --display-font: 'Noto Serif SC', serif;
+            --body-font: 'Noto Serif SC', 'DM Sans', serif;
         }
-
-        .card {
-            background: rgba(255,255,255,0.98);
-            backdrop-filter: blur(10px);
-            border-radius: 2rem;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-            overflow: hidden;
+        body[data-theme="wabisabi"] .icon-box {
+            border-radius: 4px;
+            border: 1.5px solid var(--border);
+            border-style: dashed;
         }
-
-        .inner {
-            padding: 2rem;
+        body[data-theme="wabisabi"] .header h1 { letter-spacing: 0.02em; }
+        body[data-theme="wabisabi"] .card {
+            border-radius: 4px;
+            border: 1px solid var(--border);
         }
+        body[data-theme="wabisabi"] .eyebrow { letter-spacing: 0.2em; font-size: 0.6rem; }
 
-        /* Logo 区域 */
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 16px;
+        /* ═══════ 赛博终端 ═══════ */
+        body[data-theme="terminal"] {
+            --bg: #0a0e14;
+            --surface: #111820;
+            --surface-dim: #1a2230;
+            --border: #1e3a2a;
+            --border-light: #162a20;
+            --text: #c0d0d0;
+            --text-secondary: #708888;
+            --text-muted: #405858;
+            --accent: #00ff9f;
+            --accent-hover: #00cc7f;
+            --accent-light: rgba(0, 255, 159, 0.08);
+            --accent-glow: rgba(0, 255, 159, 0.2);
+            --success: #00ff9f;
+            --success-bg: rgba(0, 255, 159, 0.08);
+            --error: #ffb000;
+            --error-bg: rgba(255, 176, 0, 0.08);
+            --display-font: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+            --body-font: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+            --mono-font: 'JetBrains Mono', 'IBM Plex Mono', monospace;
         }
-
-        .logo-icon {
-            width: 52px;
-            height: 52px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 20px rgba(102,126,234,0.3);
+        body[data-theme="terminal"] .card {
+            border: 1px solid var(--accent);
+            border-radius: 0;
+            box-shadow: 0 0 20px rgba(0, 255, 159, 0.05);
         }
-
-        .logo-icon span {
-            font-size: 32px;
+        body[data-theme="terminal"] .icon-box {
+            border-radius: 0;
+            border: 1px solid var(--accent);
+            background: #0d1218;
         }
+        body[data-theme="terminal"] .eyebrow { color: var(--accent); }
+        body[data-theme="terminal"] .header h1 { font-family: var(--mono-font); color: var(--accent); text-shadow: 0 0 10px rgba(0,255,159,0.3); }
+        body[data-theme="terminal"] .header h1 em { color: #ffb000; text-shadow: 0 0 10px rgba(255,176,0,0.3); }
+        body[data-theme="terminal"] .header-sub { color: var(--text-secondary); font-family: var(--mono-font); font-size: 0.75rem; }
+        body[data-theme="terminal"] .url-input { border-radius: 0; font-family: var(--mono-font); font-size: 0.82rem; }
+        body[data-theme="terminal"] .fetch-btn { border-radius: 0; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--mono-font); }
+        body[data-theme="terminal"] .preset, body[data-theme="terminal"] .fpill { border-radius: 0; font-family: var(--mono-font); }
+        body[data-theme="terminal"] .dl-btn { border-radius: 0; font-family: var(--mono-font); text-transform: uppercase; letter-spacing: 0.05em; }
+        body[data-theme="terminal"] .size-badge { border-radius: 0; }
+        body[data-theme="terminal"] .meta-pill { border-radius: 0; font-family: var(--mono-font); }
+        body[data-theme="terminal"] .toast { border-radius: 0; font-family: var(--mono-font); }
+        body[data-theme="terminal"] .section-label { font-family: var(--mono-font); }
+        body[data-theme="terminal"] .foot { font-family: var(--mono-font); font-size: 0.6rem; }
+        body[data-theme="terminal"] .format-block { border-color: var(--border); }
 
-        .logo-text {
-            display: flex;
-            flex-direction: column;
+        /* ═══════ 极光渐变 ═══════ */
+        body[data-theme="aurora"] {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --surface-dim: #273548;
+            --border: rgba(13, 148, 136, 0.2);
+            --border-light: rgba(13, 148, 136, 0.1);
+            --text: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent: #0d9488;
+            --accent-hover: #0f766e;
+            --accent-light: rgba(13, 148, 136, 0.1);
+            --accent-glow: rgba(13, 148, 136, 0.25);
+            --success: #34d399;
+            --success-bg: rgba(52, 211, 153, 0.1);
+            --error: #f87171;
+            --error-bg: rgba(248, 113, 113, 0.1);
         }
+        body[data-theme="aurora"] .header { position: relative; padding-bottom: 1.5rem; }
+        body[data-theme="aurora"] .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #0d9488, #34d399, #a78bfa, #0d9488);
+            background-size: 200% 100%;
+            animation: aurora-shift 4s ease-in-out infinite;
+        }
+        @keyframes aurora-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        body[data-theme="aurora"] .icon-box {
+            box-shadow: 0 0 25px rgba(13, 148, 136, 0.15), 0 0 50px rgba(167, 139, 250, 0.08);
+        }
+        body[data-theme="aurora"] .header h1 em { color: #34d399; }
+        body[data-theme="aurora"] .eyebrow { color: #34d399; }
 
-        .logo-text h1 {
-            font-size: 1.8rem;
+        /* ═══════ 瑞士极简 ═══════ */
+        body[data-theme="swiss"] {
+            --bg: #ffffff;
+            --surface: #f8f8f8;
+            --surface-dim: #f0f0f0;
+            --border: #e0e0e0;
+            --border-light: #eee;
+            --text: #000000;
+            --text-secondary: #555555;
+            --text-muted: #999999;
+            --accent: #e53935;
+            --accent-hover: #c62828;
+            --accent-light: rgba(229, 57, 53, 0.06);
+            --accent-glow: rgba(229, 57, 53, 0.12);
+            --success: #2e7d32;
+            --success-bg: rgba(46, 125, 50, 0.06);
+            --error: #e53935;
+            --error-bg: rgba(229, 57, 53, 0.06);
+            --display-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --body-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --mono-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        body[data-theme="swiss"] .header h1 {
+            font-family: var(--display-font);
             font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            line-height: 1.2;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+        }
+        body[data-theme="swiss"] .header h1 em { color: var(--accent); }
+        body[data-theme="swiss"] .eyebrow { font-family: var(--mono-font); font-weight: 700; letter-spacing: 0.15em; }
+        body[data-theme="swiss"] .card { border-radius: 0; border: 2px solid #000; }
+        body[data-theme="swiss"] .icon-box { border-radius: 0; border: 2px solid #000; }
+        body[data-theme="swiss"] .preset, body[data-theme="swiss"] .fpill { border-radius: 0; border-width: 2px; font-weight: 700; }
+        body[data-theme="swiss"] .preset.active, body[data-theme="swiss"] .fpill.active { border-color: var(--accent); }
+        body[data-theme="swiss"] .fetch-btn { border-radius: 0; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+        body[data-theme="swiss"] .dl-btn { border-radius: 0; text-transform: uppercase; font-weight: 700; }
+        body[data-theme="swiss"] .size-badge { border-radius: 0; font-weight: 700; }
+        body[data-theme="swiss"] .url-input { border-radius: 0; border-width: 2px; }
+        body[data-theme="swiss"] .meta-pill { border-radius: 0; }
+        body[data-theme="swiss"] .toast { border-radius: 0; }
+        body[data-theme="swiss"] .size-block { border-top: 2px solid #000; padding-top: 1.25rem; }
+        body[data-theme="swiss"] .format-block { border-top: 2px solid #000; }
+        body[data-theme="swiss"] .preview { border-bottom: 2px solid #000; }
+        body[data-theme="swiss"] .foot { border-top: 2px solid #000; }
+        body[data-theme="swiss"] .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; }
+
+        /* ═══════ BASE STYLES ═══════ */
+        body {
+            background: var(--bg);
+            font-family: var(--body-font);
+            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.3s, color 0.3s;
         }
 
-        .logo-text small {
-            font-size: 0.7rem;
-            background: #eef2ff;
-            padding: 0.2rem 0.7rem;
-            border-radius: 40px;
-            color: #4f46e5;
+        /* ═══════ Arcade-only base styles (default) ═══════ */
+        body:not([data-theme]) .header h1 { text-shadow: 0 0 20px rgba(0, 240, 255, 0.5); }
+        body:not([data-theme]) .header h1 em { color: #ff2d7b; text-shadow: 0 0 20px rgba(255, 45, 123, 0.5); }
+        body:not([data-theme]) .eyebrow { letter-spacing: 0.2em; }
+        body:not([data-theme]) .icon-box { border: 2px solid var(--accent); box-shadow: 0 0 15px rgba(0, 240, 255, 0.3), inset 0 0 15px rgba(0, 240, 255, 0.05); }
+        body:not([data-theme]) .card { position: relative; overflow: hidden; }
+        body:not([data-theme]) .card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px);
+            pointer-events: none;
+            border-radius: var(--radius);
+        }
+        body:not([data-theme]) .fetch-btn { text-transform: uppercase; letter-spacing: 0.08em; }
+        body:not([data-theme]) .preset.active, body:not([data-theme]) .fpill.active { box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
+
+        .page {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 3rem;
+        }
+
+        /* ── Header ── */
+        .header {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .eyebrow {
+            font-family: var(--mono-font);
+            font-size: 0.65rem;
             font-weight: 600;
-            display: inline-block;
-            width: fit-content;
-            margin-top: 4px;
-        }
-
-        /* 头部区域 */
-        .header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
             margin-bottom: 8px;
         }
 
-        .github-btn {
-            background: #1f2937;
-            color: white;
-            border: none;
-            border-radius: 40px;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.85rem;
-            font-weight: 500;
+        .header h1 {
+            font-family: var(--display-font);
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.05;
+            color: var(--text);
+            letter-spacing: -0.03em;
+        }
+
+        .header h1 em {
+            font-style: normal;
+            color: var(--accent);
+        }
+
+        .header-sub {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+
+        /* ── Theme Switcher ── */
+        .theme-switcher {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .theme-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            background: var(--surface);
             cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-
-        .github-btn:hover {
-            background: #111827;
-            transform: translateY(-2px);
-        }
-
-        .sub {
-            color: #6b7280;
-            margin-top: 0.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 3px solid #667eea;
-            padding-left: 1rem;
-            font-size: 0.85rem;
-        }
-
-        /* 模式切换 */
-        .mode-switch {
-            background: #f3f4f6;
-            border-radius: 60px;
-            padding: 4px;
-            display: inline-flex;
-            margin-bottom: 1.5rem;
-            gap: 4px;
-        }
-
-        .mode-btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 60px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            background: transparent;
-            border: none;
-            color: #6b7280;
-        }
-
-        .mode-btn.active {
-            background: white;
-            color: #667eea;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .mode-btn:hover:not(.active) {
-            background: rgba(255,255,255,0.5);
-        }
-
-        .mode-desc {
-            font-size: 0.7rem;
-            color: #9ca3af;
-            margin-left: 12px;
-            display: inline-block;
-        }
-
-        /* 输入区域 */
-        .input-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 1.5rem;
-        }
-
-        .url-input {
-            flex: 4;
-            min-width: 200px;
-            padding: 0.85rem 1.2rem;
-            font-size: 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 60px;
-            background: white;
-            transition: all 0.2s;
-            font-family: inherit;
-            outline: none;
-        }
-
-        .url-input:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
-        }
-
-        .fetch-btn {
-            flex: 1;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 60px;
-            padding: 0 1.5rem;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+            font-size: 16px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            position: relative;
         }
 
-        .fetch-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
+        .theme-btn:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
-        .result-area {
-            background: #f9fafb;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            margin: 0 0 1.5rem 0;
-            border: 1px solid #e5e7eb;
+        .theme-dropdown {
+            position: absolute;
+            top: 44px;
+            right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 6px;
+            width: 200px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            display: none;
+            z-index: 100;
         }
 
-        .preview-section {
+        .theme-dropdown.open { display: block; }
+
+        .theme-option {
             display: flex;
             align-items: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px dashed #e5e7eb;
+            gap: 10px;
+            padding: 7px 10px;
+            border-radius: var(--radius-xs);
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+            font-size: 0.78rem;
+            color: var(--text);
+            transition: background 0.12s;
         }
 
-        .icon-preview {
+        .theme-option:hover { background: var(--accent-light); }
+        .theme-option.active { background: var(--accent-light); font-weight: 600; }
+
+        .theme-swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .theme-name { flex: 1; }
+
+        .theme-check {
+            font-size: 0.7rem;
+            color: var(--accent);
+            opacity: 0;
+        }
+
+        .theme-option.active .theme-check { opacity: 1; }
+
+        /* ── Input ── */
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .url-input {
+            flex: 1;
+            padding: 0.85rem 1.1rem;
+            font-size: 0.92rem;
+            font-family: inherit;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .url-input::placeholder { color: var(--text-muted); }
+
+        .url-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .fetch-btn {
+            padding: 0 1.6rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            font-family: inherit;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: background 0.15s, transform 0.1s;
+            white-space: nowrap;
+        }
+
+        .fetch-btn:hover:not(:disabled) { background: var(--accent-hover); }
+        .fetch-btn:active:not(:disabled) { transform: scale(0.97); }
+        .fetch-btn:disabled { opacity: 0.45; cursor: wait; }
+
+        /* ── Card ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            animation: card-in 0.4s ease-out;
+        }
+
+        @keyframes card-in {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Preview ── */
+        .preview {
             display: flex;
             align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .favicon-frame {
-            background: white;
-            border-radius: 20px;
-            padding: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border: 1px solid #e5e7eb;
+        .icon-box {
+            background: var(--surface-dim);
+            border-radius: var(--radius);
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-light);
+            flex-shrink: 0;
+            position: relative;
+            width: 180px;
+            height: 180px;
         }
 
         #faviconImg {
-            width: 80px;
-            height: 80px;
             object-fit: contain;
             display: block;
-            border-radius: 12px;
+            border-radius: 6px;
+            width: 100%;
+            height: 100%;
         }
 
-        .icon-info {
-            background: white;
-            padding: 0.6rem 1rem;
-            border-radius: 16px;
-            border: 1px solid #e5e7eb;
-        }
-
-        .icon-info div {
-            margin: 3px 0;
-            font-size: 0.8rem;
-            color: #374151;
-        }
-
-        .icon-info span {
-            background: #eef2ff;
-            padding: 0.2rem 0.5rem;
-            border-radius: 10px;
-            font-size: 0.75rem;
-            color: #667eea;
-            font-weight: 500;
-        }
-
-        /* V2 特有样式 - 尺寸控制 */
-        .size-control {
-            background: white;
-            border-radius: 16px;
-            padding: 0.8rem 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid #e5e7eb;
-        }
-
-        .size-header {
+        .meta {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
+            flex-direction: column;
             gap: 8px;
         }
 
-        .size-header label {
+        .meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.72rem;
             font-weight: 600;
-            font-size: 0.85rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            width: fit-content;
+            font-family: var(--mono-font);
         }
 
-        .size-value {
-            background: #667eea;
-            color: white;
-            padding: 0.15rem 0.6rem;
-            border-radius: 40px;
-            font-size: 0.75rem;
+        .meta-pill.idle { background: var(--surface-dim); color: var(--text-muted); }
+        .meta-pill.ok { background: var(--success-bg); color: var(--success); }
+        .meta-pill.err { background: var(--error-bg); color: var(--error); }
+
+        .meta-line {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-line strong {
+            color: var(--text);
+            font-family: var(--mono-font);
             font-weight: 600;
+            font-size: 0.76rem;
+        }
+
+        .switch-btn {
+            font-family: var(--mono-font);
+            font-size: 0.66rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.12s;
+            display: none;
+            width: fit-content;
+        }
+
+        .switch-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .switch-btn.visible { display: inline-flex; align-items: center; gap: 4px; }
+
+        /* ── Section Labels ── */
+        .section-label {
+            font-family: var(--mono-font);
+            font-size: 0.62rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        /* ── Size ── */
+        .size-block {
+            margin-bottom: 1.5rem;
+        }
+
+        .size-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .size-badge {
+            font-family: var(--mono-font);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: var(--accent-light);
+            color: var(--accent);
         }
 
         input[type="range"] {
             width: 100%;
-            height: 5px;
-            border-radius: 10px;
-            background: #e5e7eb;
+            height: 3px;
+            border-radius: 3px;
+            background: var(--surface-dim);
             outline: none;
             -webkit-appearance: none;
         }
 
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background: #667eea;
+            background: var(--accent);
             cursor: pointer;
-            border: 2px solid white;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+            border: 3px solid var(--surface);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
         }
 
-        .size-presets {
+        .presets {
             display: flex;
-            gap: 8px;
-            margin-top: 10px;
+            gap: 6px;
+            margin-top: 12px;
             flex-wrap: wrap;
         }
 
-        .preset-btn {
-            background: #f3f4f6;
-            border: none;
-            padding: 0.2rem 0.7rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
+        .preset {
+            font-family: var(--mono-font);
+            font-size: 0.66rem;
             font-weight: 500;
+            padding: 4px 10px;
+            border-radius: var(--radius-xs);
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
             cursor: pointer;
-            transition: all 0.15s;
+            transition: all 0.12s;
         }
 
-        .preset-btn:hover {
-            background: #e5e7eb;
-        }
+        .preset:hover { border-color: var(--text-muted); color: var(--text); }
 
-        .preset-btn.active {
-            background: #667eea;
+        .preset.active {
+            background: var(--accent);
+            border-color: var(--accent);
             color: white;
         }
 
-        /* 下载区域 */
-        .download-section {
-            background: white;
-            border-radius: 16px;
-            padding: 0.8rem 1rem;
-            border: 1px solid #e5e7eb;
+        /* ── Format ── */
+        .format-block {
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.25rem;
         }
 
         .format-row {
@@ -372,816 +679,577 @@
             gap: 12px;
         }
 
-        .format-buttons {
+        .format-pills {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .format-option {
-            background: #f3f4f6;
-            border: 2px solid transparent;
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.15s;
-        }
-
-        .format-option:hover {
-            background: #e5e7eb;
-        }
-
-        .format-option.selected {
-            background: #667eea;
-            color: white;
-        }
-
-        .download-btn {
-            background: #10b981;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 40px;
-            color: white;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
             gap: 6px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.2s;
+            flex-wrap: wrap;
         }
 
-        .download-btn:hover:not(:disabled) {
-            background: #059669;
-            transform: translateY(-1px);
-        }
-
-        .download-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .message-area {
-            margin-top: 1rem;
-        }
-
-        .error-msg {
-            color: #dc2626;
-            background: #fee2e2;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-        }
-
-        .success-msg {
-            background: #d1fae5;
-            color: #065f46;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-        }
-
-        .info-note {
+        .fpill {
+            font-family: var(--mono-font);
             font-size: 0.7rem;
-            color: #6b7280;
-            background: #f3f4f6;
-            padding: 0.5rem 0.8rem;
-            border-radius: 12px;
-            margin-top: 1rem;
-            text-align: center;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: var(--radius-xs);
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.12s;
         }
 
-        footer {
-            text-align: center;
-            font-size: 0.65rem;
-            border-top: 1px solid #e5e7eb;
-            padding-top: 1rem;
-            margin-top: 0.5rem;
-            color: #9ca3af;
+        .fpill:hover { border-color: var(--text-muted); color: var(--text); }
+
+        .fpill.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
         }
 
-        .spinner {
+        .dl-btn {
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: inherit;
+            padding: 9px 22px;
+            border-radius: var(--radius-sm);
+            border: none;
+            background: var(--success);
+            color: white;
+            cursor: pointer;
+            transition: background 0.12s, transform 0.1s;
+        }
+
+        .dl-btn:hover:not(:disabled) { filter: brightness(0.85); }
+        .dl-btn:active:not(:disabled) { transform: scale(0.97); }
+        .dl-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        /* ── Toast ── */
+        .toast-area { margin-top: 1rem; }
+
+        .toast {
+            font-size: 0.78rem;
+            padding: 8px 14px;
+            border-radius: var(--radius-xs);
+            animation: toast-in 0.2s ease-out;
+        }
+
+        @keyframes toast-in {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .toast.ok { background: var(--success-bg); color: var(--success); }
+        .toast.err { background: var(--error-bg); color: var(--error); }
+
+        /* ── Footer ── */
+        .foot {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.68rem;
+            color: var(--text-muted);
+        }
+
+        .foot a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.12s;
+        }
+
+        .foot a:hover { color: var(--accent); }
+
+        /* ── Spinner ── */
+        .spin {
             display: inline-block;
-            width: 16px;
-            height: 16px;
+            width: 13px;
+            height: 13px;
             border: 2px solid rgba(255,255,255,0.3);
             border-radius: 50%;
             border-top-color: white;
             animation: spin 0.6s linear infinite;
+            vertical-align: middle;
+            margin-right: 4px;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── Responsive ── */
+        @media (max-width: 480px) {
+            .page { padding: 2rem 1rem; }
+            .header h1 { font-size: 2rem; }
+            .input-group { flex-direction: column; }
+            .fetch-btn { padding: 0.75rem; text-align: center; }
+            .preview { flex-direction: column; gap: 16px; }
+            .format-row { flex-direction: column; align-items: stretch; }
+            .dl-btn { text-align: center; }
+            .foot { flex-direction: column; gap: 4px; text-align: center; }
+            .theme-switcher { position: static; margin-top: 10px; display: flex; justify-content: flex-end; }
         }
 
-        button:disabled {
-            opacity: 0.6;
-            cursor: wait;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        @media (max-width: 640px) {
-            .inner {
-                padding: 1.2rem;
-            }
-            .preview-section {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .format-row {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .header-row {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .github-btn {
-                align-self: flex-start;
-            }
-            .logo-wrapper {
-                margin-bottom: 8px;
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="card">
-        <div class="inner">
-            <div class="header-row">
-                <div class="logo-wrapper">
-                    <div class="logo-icon">
-                        <span>🎯</span>
-                    </div>
-                    <div class="logo-text">
-                        <h1>Favicon 工坊</h1>
-                        <small>双模式 · 开源免费</small>
-                    </div>
-                </div>
-                <button class="github-btn" id="githubBtn">
-                    ⭐ GitHub
-                </button>
+<div class="page">
+    <header class="header">
+        <div class="theme-switcher">
+            <button class="theme-btn" id="themeBtn" title="切换主题">🎨</button>
+            <div class="theme-dropdown" id="themeDropdown">
+                <button class="theme-option" data-theme="purple"><span class="theme-swatch" style="background:linear-gradient(135deg,#667eea,#764ba2)"></span><span class="theme-name">紫色渐变</span><span class="theme-check">✓</span></button>
+                <button class="theme-option" data-theme="workshop"><span class="theme-swatch" style="background:#c2694a"></span><span class="theme-name">温暖工坊</span><span class="theme-check">✓</span></button>
+                <button class="theme-option" data-theme="neon"><span class="theme-swatch" style="background:#8b5cf6"></span><span class="theme-name">暗夜霓虹</span><span class="theme-check">✓</span></button>
+                <button class="theme-option" data-theme="arcade"><span class="theme-swatch" style="background:#00f0ff"></span><span class="theme-name">复古街机</span><span class="theme-check">✓</span></button>
+                <button class="theme-option" data-theme="wabisabi"><span class="theme-swatch" style="background:#7d8a6e"></span><span class="theme-name">日式侘寂</span><span class="theme-check">✓</span></button>
+                <button class="theme-option" data-theme="terminal"><span class="theme-swatch" style="background:#00ff9f"></span><span class="theme-name">赛博终端</span><span class="theme-check">✓</span></button>
+                <button class="theme-option" data-theme="aurora"><span class="theme-swatch" style="background:linear-gradient(135deg,#0d9488,#a78bfa)"></span><span class="theme-name">极光渐变</span><span class="theme-check">✓</span></button>
+                <button class="theme-option" data-theme="swiss"><span class="theme-swatch" style="background:#e53935"></span><span class="theme-name">瑞士极简</span><span class="theme-check">✓</span></button>
             </div>
-            <div class="sub">
-                从任何网站提取高清图标，支持 PNG / JPEG / WebP / ICO 格式
-            </div>
-
-            <!-- 模式切换 -->
-            <div style="margin-bottom: 1rem;">
-                <div class="mode-switch">
-                    <button class="mode-btn active" data-mode="v1">⚡ 快速模式 (V1)</button>
-                    <button class="mode-btn" data-mode="v2">🚀 增强模式 (V2)</button>
-                </div>
-                <span class="mode-desc" id="modeDesc">直接获取，速度极快，支持 PNG/JPEG/WebP</span>
-            </div>
-
-            <div class="input-group">
-                <input type="text" id="siteUrl" class="url-input" placeholder="输入网址，例如: github.com 或 https://apple.com" value="github.com">
-                <button id="fetchBtn" class="fetch-btn">
-                    ✨ 获取图标
-                </button>
-            </div>
-
-            <div class="result-area" id="resultArea">
-                <div class="preview-section">
-                    <div class="icon-preview">
-                        <div class="favicon-frame">
-                            <img id="faviconImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%23f3f4f6'/%3E%3Ctext x='6' y='17' font-size='12' fill='%239ca3af'%3E🌐%3C/text%3E%3C/svg%3E" alt="favicon">
-                        </div>
-                        <div class="icon-info">
-                            <div>状态: <span id="iconStatus">等待输入</span></div>
-                            <div>原始尺寸: <span id="originalSize">—</span></div>
-                            <div id="sizeInfoRow">预览尺寸: <strong id="previewSizeLabel">—</strong></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- V2 尺寸调整区域（默认隐藏） -->
-                <div id="sizeControlPanel" class="size-control hidden">
-                    <div class="size-header">
-                        <label>📐 调整尺寸 (仅增强模式)</label>
-                        <span class="size-value" id="sizeValueDisplay">80 x 80</span>
-                    </div>
-                    <input type="range" id="sizeSlider" min="16" max="512" value="80" step="4">
-                    <div class="size-presets">
-                        <button class="preset-btn" data-size="32">32</button>
-                        <button class="preset-btn" data-size="48">48</button>
-                        <button class="preset-btn" data-size="64">64</button>
-                        <button class="preset-btn" data-size="80">80</button>
-                        <button class="preset-btn" data-size="128">128</button>
-                        <button class="preset-btn" data-size="256">256</button>
-                        <button class="preset-btn" data-size="512">512</button>
-                    </div>
-                </div>
-
-                <!-- 下载区域 -->
-                <div class="download-section">
-                    <div class="format-row">
-                        <div class="format-buttons" id="formatButtons">
-                            <button class="format-option selected" data-format="png">PNG</button>
-                            <button class="format-option" data-format="jpeg">JPEG</button>
-                            <button class="format-option" data-format="webp">WebP</button>
-                            <button class="format-option" data-format="ico">ICO</button>
-                        </div>
-                        <button id="downloadBtn" class="download-btn" disabled>⬇️ 下载图标</button>
-                    </div>
-                </div>
-
-                <div id="messageArea"></div>
-                <div class="info-note" id="infoNote">
-                    💡 <strong>快速模式</strong>：直接获取，速度极快，支持 PNG/JPEG/WebP<br>
-                    🚀 <strong>增强模式</strong>：支持尺寸调整 + ICO 格式，通过代理获取（速度稍慢）
-                </div>
-            </div>
-            <footer>
-                ⚡ 纯前端实现 · 开源免费 · 隐私安全 · <span id="modeTag">快速模式</span>
-            </footer>
         </div>
+        <div class="eyebrow">图标提取工具</div>
+        <h1>Favicon <em>工坊</em></h1>
+        <p class="header-sub">粘贴任意网址，提取高清图标，自由调整尺寸与格式</p>
+    </header>
+
+    <div class="input-group">
+        <input type="text" id="siteUrl" class="url-input" placeholder="输入网址，例如 github.com" value="github.com">
+        <button id="fetchBtn" class="fetch-btn">提取图标</button>
     </div>
+
+    <div class="card" id="resultArea">
+        <div class="preview">
+            <div class="icon-box">
+                <img id="faviconImg" width="80" height="80" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='80' height='80' rx='8' fill='%23ede8e2'/%3E%3Ctext x='40' y='48' text-anchor='middle' font-size='26' fill='%239c8e80'%3E?%3C/text%3E%3C/svg%3E" alt="favicon">
+            </div>
+            <div class="meta">
+                <div id="iconStatus" class="meta-pill idle">等待输入</div>
+                <div class="meta-line">原始尺寸 <strong id="originalSize">—</strong></div>
+                <div class="meta-line">预览尺寸 <strong id="previewSizeLabel">—</strong></div>
+                <button class="switch-btn" id="switchBtn" title="尝试其他源">↻ 换源</button>
+            </div>
+        </div>
+
+        <div class="size-block">
+            <div class="size-row">
+                <span class="section-label">尺寸</span>
+                <span class="size-badge" id="sizeValueDisplay">80 × 80</span>
+            </div>
+            <input type="range" id="sizeSlider" min="16" max="512" value="80" step="4">
+            <div class="presets" id="presetGroup">
+                <button class="preset" data-size="16">16</button>
+                <button class="preset" data-size="32">32</button>
+                <button class="preset" data-size="48">48</button>
+                <button class="preset" data-size="64">64</button>
+                <button class="preset active" data-size="80">80</button>
+                <button class="preset" data-size="128">128</button>
+                <button class="preset" data-size="256">256</button>
+                <button class="preset" data-size="512">512</button>
+            </div>
+        </div>
+
+        <div class="format-block">
+            <div class="section-label">格式</div>
+            <div class="format-row">
+                <div class="format-pills" id="formatButtons">
+                    <button class="fpill active" data-format="png">PNG</button>
+                    <button class="fpill" data-format="jpeg">JPG</button>
+                    <button class="fpill" data-format="webp">WebP</button>
+                    <button class="fpill" data-format="ico">ICO</button>
+                </div>
+                <button id="downloadBtn" class="dl-btn" disabled>下载文件</button>
+            </div>
+        </div>
+
+        <div class="toast-area" id="messageArea"></div>
+    </div>
+
+    <footer class="foot">
+        <span>纯前端 · 免费开源 · 隐私安全</span>
+        <a href="https://github.com/Shiguang-coding/favicon-tool" target="_blank" id="ghLink">GitHub ↗</a>
+    </footer>
 </div>
 
 <script>
-    (function(){
-        // ========== DOM 元素 ==========
-        const siteUrlInput = document.getElementById('siteUrl');
-        const fetchBtn = document.getElementById('fetchBtn');
-        const faviconImg = document.getElementById('faviconImg');
-        const iconStatusSpan = document.getElementById('iconStatus');
-        const originalSizeSpan = document.getElementById('originalSize');
-        const previewSizeLabel = document.getElementById('previewSizeLabel');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const messageDiv = document.getElementById('messageArea');
-        const modeBtns = document.querySelectorAll('.mode-btn');
-        const modeDesc = document.getElementById('modeDesc');
-        const modeTag = document.getElementById('modeTag');
-        const infoNote = document.getElementById('infoNote');
-        const sizeControlPanel = document.getElementById('sizeControlPanel');
-        const sizeSlider = document.getElementById('sizeSlider');
-        const sizeValueDisplay = document.getElementById('sizeValueDisplay');
-        const presetBtns = document.querySelectorAll('.preset-btn');
-        const formatBtns = document.querySelectorAll('.format-option');
-        const githubBtn = document.getElementById('githubBtn');
+(function(){
+    // ========== Theme Switcher ==========
+    var themeBtn = document.getElementById('themeBtn');
+    var themeDropdown = document.getElementById('themeDropdown');
+    var themeOptions = document.querySelectorAll('.theme-option');
+    var STORAGE_KEY = 'favicon-theme';
 
-        
-        const GITHUB_URL = 'https://github.com/Shiguang-coding/favicon-tool';
-
-        githubBtn.addEventListener('click', () => {
-            window.open(GITHUB_URL, '_blank');
+    function applyTheme(name) {
+        if (name === 'arcade') {
+            document.body.removeAttribute('data-theme');
+        } else {
+            document.body.setAttribute('data-theme', name);
+        }
+        themeOptions.forEach(function(opt) {
+            opt.classList.toggle('active', opt.dataset.theme === name);
         });
+    }
 
-        // ========== 全局状态 ==========
-        let currentMode = 'v1';           // 'v1' 或 'v2'
-        let isLoading = false;
+    function loadTheme() {
+        var saved = localStorage.getItem(STORAGE_KEY);
+        applyTheme(saved || 'arcade');
+    }
 
-        // V1 状态
-        let v1PngBlob = null;
-        let v1PreviewUrl = null;
-        let v1Width = 0, v1Height = 0;
+    themeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        themeDropdown.classList.toggle('open');
+    });
 
-        // V2 状态
-        let v2ImageBlob = null;
-        let v2Width = 0, v2Height = 0;
-        let v2CurrentTargetSize = 80;
-        let v2PreviewUrl = null;
-
-        // 当前选中的格式和尺寸
-        let currentFormat = 'png';
-        let v2TargetSize = 80;
-
-        // ========== 通用函数 ==========
-        function showMessage(msg, isError = false) {
-            messageDiv.innerHTML = `<div class="${isError ? 'error-msg' : 'success-msg'}">${msg}</div>`;
-            setTimeout(() => {
-                if (messageDiv.innerHTML.includes(msg)) {
-                    setTimeout(() => { if(messageDiv.innerHTML.includes(msg)) messageDiv.innerHTML = ''; }, 2500);
-                }
-            }, 3000);
+    document.addEventListener('click', function(e) {
+        if (!themeDropdown.contains(e.target) && e.target !== themeBtn) {
+            themeDropdown.classList.remove('open');
         }
+    });
 
-        function extractDomain(input) {
-            let url = input.trim();
-            if (!url) return null;
-            if (!/^https?:\/\//i.test(url)) {
-                url = 'https://' + url;
-            }
-            try {
-                const parsed = new URL(url);
-                return parsed.hostname;
-            } catch (e) {
-                return null;
-            }
-        }
+    themeOptions.forEach(function(opt) {
+        opt.addEventListener('click', function() {
+            var name = opt.dataset.theme;
+            applyTheme(name);
+            localStorage.setItem(STORAGE_KEY, name);
+            themeDropdown.classList.remove('open');
+        });
+    });
 
-        // 重置显示
-        function resetDisplay() {
-            if (currentMode === 'v1') {
-                previewSizeLabel.innerText = v1Width && v1Height ? `${v1Width}x${v1Height}` : '—';
-            } else {
-                previewSizeLabel.innerText = `${v2TargetSize}x${v2TargetSize}`;
-                sizeValueDisplay.innerText = `${v2TargetSize} x ${v2TargetSize}`;
-                sizeSlider.value = v2TargetSize;
-            }
-        }
+    loadTheme();
 
-        // ========== V1 核心逻辑（快速模式）==========
-        async function v1FetchFromGoogle(domain, size = 128) {
-            return new Promise((resolve) => {
-                const img = new Image();
-                img.crossOrigin = 'Anonymous';
-                const url = `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`;
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
-                    canvas.toBlob((blob) => resolve(blob), 'image/png');
-                };
-                img.onerror = () => resolve(null);
-                img.src = url;
-            });
-        }
+    // ========== DOM ==========
+    var siteUrlInput = document.getElementById('siteUrl');
+    var fetchBtn = document.getElementById('fetchBtn');
+    var faviconImg = document.getElementById('faviconImg');
+    var iconStatusSpan = document.getElementById('iconStatus');
+    var originalSizeSpan = document.getElementById('originalSize');
+    var previewSizeLabel = document.getElementById('previewSizeLabel');
+    var downloadBtn = document.getElementById('downloadBtn');
+    var messageDiv = document.getElementById('messageArea');
+    var sizeSlider = document.getElementById('sizeSlider');
+    var sizeValueDisplay = document.getElementById('sizeValueDisplay');
+    var presetBtns = document.querySelectorAll('.preset');
+    var formatBtns = document.querySelectorAll('.fpill');
+    var switchBtn = document.getElementById('switchBtn');
 
-        async function v1FetchFromFaviconKit(domain) {
-            return new Promise((resolve) => {
-                const img = new Image();
-                img.crossOrigin = 'Anonymous';
-                const url = `https://faviconkit.com/${domain}/144`;
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
-                    canvas.toBlob((blob) => resolve(blob), 'image/png');
-                };
-                img.onerror = () => resolve(null);
-                img.src = url;
-            });
-        }
+    var isLoading = false;
+    var imageBlob = null;
+    var imageWidth = 0;
+    var imageHeight = 0;
+    var previewUrl = null;
+    var currentFormat = 'png';
+    var targetSize = 80;
+    var currentDomain = '';
+    var currentUrls = [];
+    var currentSourceIndex = -1;
 
-        async function v1FetchFromIconHorse(domain) {
-            return new Promise((resolve) => {
-                const img = new Image();
-                img.crossOrigin = 'Anonymous';
-                const url = `https://icon.horse/icon/${domain}`;
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
-                    canvas.toBlob((blob) => resolve(blob), 'image/png');
-                };
-                img.onerror = () => resolve(null);
-                img.src = url;
-            });
-        }
+    function showMessage(msg, isError) {
+        messageDiv.innerHTML = '<div class="toast ' + (isError ? 'err' : 'ok') + '">' + msg + '</div>';
+        setTimeout(function() { if(messageDiv.innerHTML.includes(msg)) messageDiv.innerHTML = ''; }, 3500);
+    }
 
-        async function v1GetBestFavicon(domain) {
-            if (!domain) return null;
-            const strategies = [
-                { fn: () => v1FetchFromGoogle(domain, 128) },
-                { fn: () => v1FetchFromGoogle(domain, 64) },
-                { fn: () => v1FetchFromIconHorse(domain) },
-                { fn: () => v1FetchFromFaviconKit(domain) }
-            ];
-            for (const strategy of strategies) {
-                const blob = await strategy.fn();
-                if (blob && blob.size > 80) return blob;
-                if (blob && blob.size > 40) return blob;
-            }
-            return null;
-        }
+    function setStatus(text, type) {
+        iconStatusSpan.textContent = text;
+        iconStatusSpan.className = 'meta-pill ' + type;
+    }
 
-        async function v1ConvertToFormat(pngBlob, format) {
-            if (format === 'png') return pngBlob;
-            return new Promise((resolve) => {
-                const img = new Image();
-                const url = URL.createObjectURL(pngBlob);
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
-                    let mimeType = format === 'jpeg' ? 'image/jpeg' : 'image/webp';
-                    canvas.toBlob((blob) => {
-                        URL.revokeObjectURL(url);
-                        resolve(blob);
-                    }, mimeType, 0.92);
-                };
-                img.onerror = () => {
-                    URL.revokeObjectURL(url);
-                    resolve(null);
-                };
-                img.src = url;
-            });
-        }
+    function extractDomain(input) {
+        var url = input.trim();
+        if (!url) return null;
+        if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+        try { return new URL(url).hostname; } catch(e) { return null; }
+    }
 
-        async function v1UpdatePreview(blob, width, height) {
-            if (v1PreviewUrl) URL.revokeObjectURL(v1PreviewUrl);
-            v1PreviewUrl = URL.createObjectURL(blob);
-            faviconImg.src = v1PreviewUrl;
-            v1PngBlob = blob;
-            v1Width = width;
-            v1Height = height;
-            originalSizeSpan.innerText = `${width} x ${height}`;
-            previewSizeLabel.innerText = `${width}x${height}`;
-            iconStatusSpan.innerText = '✓ 已获取 (快速模式)';
-            downloadBtn.disabled = false;
-        }
+    function updateSizeDisplay() {
+        sizeValueDisplay.textContent = targetSize + ' × ' + targetSize;
+        previewSizeLabel.textContent = targetSize + '×' + targetSize;
+        sizeSlider.value = targetSize;
+        presetBtns.forEach(function(btn) {
+            btn.classList.toggle('active', parseInt(btn.dataset.size) === targetSize);
+        });
+    }
 
-        async function v1HandleFetch(domain) {
-            const pngBlob = await v1GetBestFavicon(domain);
-            if (pngBlob && pngBlob.size > 50) {
-                const img = new Image();
-                const url = URL.createObjectURL(pngBlob);
-                return new Promise((resolve) => {
-                    img.onload = () => {
-                        URL.revokeObjectURL(url);
-                        v1UpdatePreview(pngBlob, img.width, img.height);
-                        resolve(true);
-                    };
-                    img.onerror = () => {
-                        URL.revokeObjectURL(url);
-                        v1UpdatePreview(pngBlob, 0, 0);
-                        resolve(true);
-                    };
-                    img.src = url;
+    function extractSiteIconUrls(domain) {
+        var enc = encodeURIComponent(domain);
+        var o = 'https://' + domain;
+        return [
+            'https://icon.horse/icon/' + domain,
+            'https://favicon.so/' + enc,
+            o + '/favicon.ico'
+        ];
+    }
+
+    async function fetchIconBlob(url) {
+        var c = new AbortController();
+        var t = setTimeout(function() { c.abort(); }, 6000);
+        try {
+            var r = await fetch(url, { signal: c.signal });
+            if (!r.ok) return null;
+            var b = await r.blob();
+            if (!b.size) return null;
+            var ct = b.type || '';
+            if (ct && !ct.startsWith('image/')) return null;
+            return b;
+        } catch(e) { return null; }
+        finally { clearTimeout(t); }
+    }
+
+    async function getBestFavicon(domain, startIndex) {
+        if (!domain) return null;
+        var urls = extractSiteIconUrls(domain);
+        var start = startIndex || 0;
+        for (var i = start; i < urls.length; i++) {
+            var blob = await fetchIconBlob(urls[i]);
+            if (blob && blob.size > 40) {
+                var result = await new Promise(function(resolve) {
+                    var img = new Image();
+                    var u = URL.createObjectURL(blob);
+                    img.onload = function() { URL.revokeObjectURL(u); resolve({ blob: blob, width: img.width, height: img.height }); };
+                    img.onerror = function() { URL.revokeObjectURL(u); resolve({ blob: blob, width: 128, height: 128 }); };
+                    img.src = u;
                 });
+                result.sourceIndex = i;
+                result.sourceUrl = urls[i];
+                return result;
             }
-            return false;
         }
+        return null;
+    }
 
-        // ========== V2 核心逻辑（增强模式，带代理）==========
-        async function v2FetchImageViaProxy(url) {
-            const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
-            try {
-                const response = await fetch(proxyUrl);
-                if (response.ok) return await response.blob();
-            } catch (e) {}
-            return null;
-        }
+    async function resizeBlob(blob, size) {
+        return new Promise(function(resolve, reject) {
+            var img = new Image();
+            var u = URL.createObjectURL(blob);
+            img.onload = function() {
+                var c = document.createElement('canvas');
+                c.width = c.height = size;
+                var ctx = c.getContext('2d');
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                ctx.drawImage(img, 0, 0, size, size);
+                c.toBlob(function(b) { URL.revokeObjectURL(u); b ? resolve(b) : reject(new Error('缩放失败')); }, 'image/png');
+            };
+            img.onerror = function() { URL.revokeObjectURL(u); reject(new Error('图片加载失败')); };
+            img.src = u;
+        });
+    }
 
-        async function v2FetchIconAsBlob(domain) {
-            const googleUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
-            let blob = await v2FetchImageViaProxy(googleUrl);
-            if (blob && blob.size > 80) return { blob, width: 128, height: 128 };
-            
-            const horseUrl = `https://icon.horse/icon/${domain}`;
-            blob = await v2FetchImageViaProxy(horseUrl);
-            if (blob && blob.size > 80) {
-                return new Promise((resolve) => {
-                    const img = new Image();
-                    const url = URL.createObjectURL(blob);
-                    img.onload = () => {
-                        URL.revokeObjectURL(url);
-                        resolve({ blob, width: img.width, height: img.height });
-                    };
-                    img.onerror = () => {
-                        URL.revokeObjectURL(url);
-                        resolve({ blob, width: 64, height: 64 });
-                    };
-                    img.src = url;
-                });
+    function createIcoBuffer(rgba, w, h) {
+        var fileHeaderSize = 6, infoHeaderSize = 40, bpp = 32;
+        var andMaskSize = Math.ceil((w * h) / 8);
+        var andMaskPadded = Math.ceil(andMaskSize / 4) * 4;
+        var imageSize = infoHeaderSize + w * h * 4 + andMaskPadded;
+        var fileSize = fileHeaderSize + 16 + imageSize;
+        var buf = new ArrayBuffer(fileSize);
+        var v = new DataView(buf);
+
+        v.setUint16(0, 0, true); v.setUint16(2, 1, true); v.setUint16(4, 1, true);
+
+        var o = 6;
+        v.setUint8(o, w & 0xff); v.setUint8(o + 1, h & 0xff);
+        v.setUint8(o + 2, 0); v.setUint8(o + 3, 0);
+        v.setUint16(o + 4, 1, true); v.setUint16(o + 6, bpp, true);
+        v.setUint32(o + 8, imageSize, true); v.setUint32(o + 12, fileHeaderSize + 16, true);
+
+        var b = fileHeaderSize + 16;
+        v.setUint32(b, infoHeaderSize, true);
+        v.setInt32(b + 4, w, true); v.setInt32(b + 8, h * 2, true);
+        v.setUint16(b + 12, 1, true); v.setUint16(b + 14, bpp, true);
+        v.setUint32(b + 16, 0, true); v.setUint32(b + 20, w * h * 4, true);
+        v.setInt32(b + 24, 0, true); v.setInt32(b + 28, 0, true);
+        v.setUint32(b + 32, 0, true); v.setUint32(b + 36, 0, true);
+
+        var d = b + infoHeaderSize;
+        for (var y = 0; y < h; y++) {
+            var sr = (h - 1 - y) * w * 4;
+            var dr = y * w * 4;
+            for (var x = 0; x < w; x++) {
+                var si = sr + x * 4, di = d + dr + x * 4;
+                v.setUint8(di, rgba[si + 2]); v.setUint8(di + 1, rgba[si + 1]);
+                v.setUint8(di + 2, rgba[si]); v.setUint8(di + 3, rgba[si + 3]);
             }
-            
-            const googleUrl64 = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-            blob = await v2FetchImageViaProxy(googleUrl64);
-            if (blob && blob.size > 40) return { blob, width: 64, height: 64 };
-            return null;
         }
+        return buf;
+    }
 
-        async function v2ResizeBlob(blob, targetSize) {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                const url = URL.createObjectURL(blob);
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = targetSize;
-                    canvas.height = targetSize;
-                    const ctx = canvas.getContext('2d');
-                    ctx.imageSmoothingEnabled = true;
-                    ctx.imageSmoothingQuality = 'high';
-                    ctx.drawImage(img, 0, 0, targetSize, targetSize);
-                    canvas.toBlob((resizedBlob) => {
-                        URL.revokeObjectURL(url);
-                        if (resizedBlob) resolve(resizedBlob);
-                        else reject(new Error('缩放失败'));
-                    }, 'image/png');
-                };
-                img.onerror = () => {
-                    URL.revokeObjectURL(url);
-                    reject(new Error('图片加载失败'));
-                };
-                img.src = url;
-            });
-        }
-
-        function v2CreateIcoBuffer(rgba, width, height) {
-            const fileHeaderSize = 6, infoHeaderSize = 40, bpp = 32;
-            const imageSize = width * height * 4;
-            const fileSize = fileHeaderSize + 16 + infoHeaderSize + imageSize;
-            const buffer = new ArrayBuffer(fileSize);
-            const view = new DataView(buffer);
-            view.setUint16(0, 0, true);
-            view.setUint16(2, 1, true);
-            view.setUint16(4, 1, true);
-            let offset = 6;
-            view.setUint8(offset, width);
-            view.setUint8(offset+1, height);
-            view.setUint8(offset+2, 0);
-            view.setUint8(offset+3, 0);
-            view.setUint16(offset+4, 1);
-            view.setUint16(offset+6, bpp);
-            view.setUint32(offset+8, imageSize);
-            view.setUint32(offset+12, fileHeaderSize + 16);
-            let bitmapOffset = fileHeaderSize + 16;
-            view.setUint32(bitmapOffset, infoHeaderSize, true);
-            view.setInt32(bitmapOffset+4, width, true);
-            view.setInt32(bitmapOffset+8, height * 2, true);
-            view.setUint16(bitmapOffset+12, 1, true);
-            view.setUint16(bitmapOffset+14, bpp, true);
-            view.setUint32(bitmapOffset+16, 0, true);
-            view.setUint32(bitmapOffset+20, imageSize, true);
-            view.setInt32(bitmapOffset+24, 0, true);
-            view.setInt32(bitmapOffset+28, 0, true);
-            view.setUint32(bitmapOffset+32, 0, true);
-            view.setUint32(bitmapOffset+36, 0, true);
-            let dataOffset = bitmapOffset + infoHeaderSize;
-            for (let y = 0; y < height; y++) {
-                for (let x = 0; x < width; x++) {
-                    const idx = (y * width + x) * 4;
-                    const pixelOffset = dataOffset + (y * width + x) * 4;
-                    view.setUint8(pixelOffset, rgba[idx+2]);
-                    view.setUint8(pixelOffset+1, rgba[idx+1]);
-                    view.setUint8(pixelOffset+2, rgba[idx]);
-                    view.setUint8(pixelOffset+3, rgba[idx+3]);
-                }
-            }
-            return buffer;
-        }
-
-        async function v2ConvertToFormat(blob, format, size) {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                const url = URL.createObjectURL(blob);
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = size;
-                    canvas.height = size;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, size, size);
-                    if (format === 'ico') {
-                        const icoBuffer = v2CreateIcoBuffer(ctx.getImageData(0, 0, size, size).data, size, size);
-                        const icoBlob = new Blob([icoBuffer], { type: 'image/x-icon' });
-                        URL.revokeObjectURL(url);
-                        resolve(icoBlob);
-                    } else {
-                        let mime = format === 'jpeg' ? 'image/jpeg' : 'image/webp';
-                        canvas.toBlob((blob) => {
-                            URL.revokeObjectURL(url);
-                            resolve(blob);
-                        }, mime, 0.92);
-                    }
-                };
-                img.onerror = () => {
-                    URL.revokeObjectURL(url);
-                    reject(new Error('图片加载失败'));
-                };
-                img.src = url;
-            });
-        }
-
-        async function v2UpdatePreview() {
-            if (!v2ImageBlob) return;
-            try {
-                const resizedBlob = await v2ResizeBlob(v2ImageBlob, v2TargetSize);
-                if (v2PreviewUrl) URL.revokeObjectURL(v2PreviewUrl);
-                v2PreviewUrl = URL.createObjectURL(resizedBlob);
-                faviconImg.src = v2PreviewUrl;
-                previewSizeLabel.innerText = `${v2TargetSize}x${v2TargetSize}`;
-                sizeValueDisplay.innerText = `${v2TargetSize} x ${v2TargetSize}`;
-                sizeSlider.value = v2TargetSize;
-                presetBtns.forEach(btn => {
-                    const sv = parseInt(btn.getAttribute('data-size'));
-                    if (sv === v2TargetSize) btn.classList.add('active');
-                    else btn.classList.remove('active');
-                });
-            } catch(e) {}
-        }
-
-        async function v2HandleFetch(domain) {
-            const result = await v2FetchIconAsBlob(domain);
-            if (result && result.blob && result.blob.size > 40) {
-                v2ImageBlob = result.blob;
-                v2Width = result.width;
-                v2Height = result.height;
-                originalSizeSpan.innerText = `${v2Width} x ${v2Height}`;
-                iconStatusSpan.innerText = '✓ 已获取 (增强模式)';
-                // 显示原图预览
-                if (v2PreviewUrl) URL.revokeObjectURL(v2PreviewUrl);
-                v2PreviewUrl = URL.createObjectURL(v2ImageBlob);
-                faviconImg.src = v2PreviewUrl;
-                previewSizeLabel.innerText = `${v2TargetSize}x${v2TargetSize}`;
-                downloadBtn.disabled = false;
-                return true;
-            }
-            return false;
-        }
-
-        // ========== 统一获取入口 ==========
-        async function handleFetchIcon() {
-            if (isLoading) {
-                showMessage('正在获取中...', false);
-                return;
-            }
-            const input = siteUrlInput.value.trim();
-            if (!input) {
-                showMessage('请输入网址', true);
-                return;
-            }
-            const domain = extractDomain(input);
-            if (!domain) {
-                showMessage('无效网址', true);
-                return;
-            }
-
-            isLoading = true;
-            fetchBtn.disabled = true;
-            fetchBtn.innerHTML = '<span class="spinner"></span> 获取中...';
-            downloadBtn.disabled = true;
-            iconStatusSpan.innerText = '获取中...';
-            originalSizeSpan.innerText = '—';
-            
-            let success = false;
-            try {
-                if (currentMode === 'v1') {
-                    showMessage(`快速模式 - 正在获取 ${domain} 的图标...`, false);
-                    success = await v1HandleFetch(domain);
+    async function convertToFormat(blob, format, size) {
+        return new Promise(function(resolve, reject) {
+            var img = new Image();
+            var u = URL.createObjectURL(blob);
+            img.onload = function() {
+                var c = document.createElement('canvas');
+                c.width = c.height = size;
+                var ctx = c.getContext('2d');
+                ctx.drawImage(img, 0, 0, size, size);
+                if (format === 'ico') {
+                    var buf = createIcoBuffer(ctx.getImageData(0, 0, size, size).data, size, size);
+                    URL.revokeObjectURL(u);
+                    resolve(new Blob([buf], { type: 'image/x-icon' }));
                 } else {
-                    showMessage(`增强模式 - 正在通过代理获取 ${domain} 的图标（稍慢）...`, false);
-                    success = await v2HandleFetch(domain);
+                    var mime = format === 'jpeg' ? 'image/jpeg' : 'image/webp';
+                    c.toBlob(function(b) { URL.revokeObjectURL(u); resolve(b); }, mime, 0.92);
                 }
-                
-                if (success) {
-                    showMessage(`✅ 获取成功！`, false);
-                } else {
-                    iconStatusSpan.innerText = '未找到';
-                    faviconImg.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%23f3f4f6'/%3E%3Ctext x='5' y='17' font-size='12' fill='%239ca3af'%3E❌%3C/text%3E%3C/svg%3E";
-                    showMessage(`未找到 ${domain} 的图标`, true);
-                }
-            } catch(err) {
-                showMessage(`获取失败`, true);
-                iconStatusSpan.innerText = '失败';
-            } finally {
-                isLoading = false;
-                fetchBtn.disabled = false;
-                fetchBtn.innerHTML = '✨ 获取图标';
-            }
-        }
+            };
+            img.onerror = function() { URL.revokeObjectURL(u); reject(new Error('图片加载失败')); };
+            img.src = u;
+        });
+    }
 
-        // ========== 统一下载入口 ==========
-        async function handleDownload() {
-            if (currentMode === 'v1') {
-                if (!v1PngBlob) {
-                    showMessage('请先获取图标', true);
-                    return;
-                }
-                const domain = extractDomain(siteUrlInput.value.trim()) || 'favicon';
-                const ext = currentFormat === 'jpeg' ? 'jpg' : currentFormat;
-                const filename = `${domain.replace(/\./g, '_')}_icon.${ext}`;
-                
-                let outputBlob = v1PngBlob;
-                if (currentFormat !== 'png') {
-                    outputBlob = await v1ConvertToFormat(v1PngBlob, currentFormat);
-                } else if (currentFormat === 'ico') {
-                    showMessage('快速模式不支持 ICO 格式，请切换到增强模式', true);
-                    return;
-                }
-                if (outputBlob) {
-                    const url = URL.createObjectURL(outputBlob);
-                    const link = document.createElement('a');
-                    link.href = url;
-                    link.download = filename;
-                    link.click();
-                    URL.revokeObjectURL(url);
-                    showMessage(`✅ 已下载 ${filename}`, false);
-                } else {
-                    showMessage('转换失败', true);
-                }
+    async function updatePreview() {
+        if (!imageBlob) return;
+        try {
+            var resized = await resizeBlob(imageBlob, targetSize);
+            if (previewUrl) URL.revokeObjectURL(previewUrl);
+            previewUrl = URL.createObjectURL(resized);
+            faviconImg.src = previewUrl;
+            updateSizeDisplay();
+        } catch(e) {}
+    }
+
+    function getSourceName(url) {
+        if (url.includes('icon.horse')) return 'icon.horse';
+        if (url.includes('favicon.so')) return 'favicon.so';
+        if (url.includes('favicon.ico')) return 'favicon.ico';
+        return '未知源';
+    }
+
+    function applyResult(result) {
+        imageBlob = result.blob;
+        imageWidth = result.width;
+        imageHeight = result.height;
+        currentSourceIndex = result.sourceIndex;
+        originalSizeSpan.textContent = imageWidth + ' × ' + imageHeight;
+        setStatus('已获取 · ' + getSourceName(result.sourceUrl), 'ok');
+        if (previewUrl) URL.revokeObjectURL(previewUrl);
+        previewUrl = URL.createObjectURL(imageBlob);
+        faviconImg.src = previewUrl;
+        previewSizeLabel.textContent = targetSize + '×' + targetSize;
+        downloadBtn.disabled = false;
+        switchBtn.classList.add('visible');
+        switchBtn.textContent = '↻ 换源 (' + (currentSourceIndex + 1) + '/' + currentUrls.length + ')';
+    }
+
+    async function handleFetchIcon() {
+        if (isLoading) return;
+        var input = siteUrlInput.value.trim();
+        if (!input) { showMessage('请输入网址', true); return; }
+        var domain = extractDomain(input);
+        if (!domain) { showMessage('无效网址', true); return; }
+
+        currentDomain = domain;
+        currentUrls = extractSiteIconUrls(domain);
+        currentSourceIndex = -1;
+
+        isLoading = true;
+        fetchBtn.disabled = true;
+        fetchBtn.innerHTML = '<span class="spin"></span>提取中';
+        downloadBtn.disabled = true;
+        switchBtn.classList.remove('visible');
+        setStatus('提取中…', 'idle');
+        originalSizeSpan.textContent = '—';
+
+        try {
+            var result = await getBestFavicon(domain, 0);
+            if (result) {
+                applyResult(result);
+                showMessage('提取成功');
             } else {
-                if (!v2ImageBlob) {
-                    showMessage('请先获取图标', true);
-                    return;
-                }
-                const domain = extractDomain(siteUrlInput.value.trim()) || 'favicon';
-                const ext = currentFormat === 'jpeg' ? 'jpg' : currentFormat;
-                const filename = `${domain.replace(/\./g, '_')}_${v2TargetSize}px.${ext}`;
-                
-                try {
-                    const outputBlob = await v2ConvertToFormat(v2ImageBlob, currentFormat, v2TargetSize);
-                    const url = URL.createObjectURL(outputBlob);
-                    const link = document.createElement('a');
-                    link.href = url;
-                    link.download = filename;
-                    link.click();
-                    URL.revokeObjectURL(url);
-                    showMessage(`✅ 已下载 ${filename}`, false);
-                } catch(e) {
-                    showMessage('下载失败', true);
-                }
+                setStatus('未找到', 'err');
+                faviconImg.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='80' height='80' rx='8' fill='%23ede8e2'/%3E%3Ctext x='40' y='48' text-anchor='middle' font-size='26' fill='%239c8e80'%3E?%3C/text%3E%3C/svg%3E";
+                showMessage('未找到 ' + domain + ' 的图标', true);
             }
+        } catch(e) {
+            showMessage('提取失败', true);
+            setStatus('失败', 'err');
+        } finally {
+            isLoading = false;
+            fetchBtn.disabled = false;
+            fetchBtn.textContent = '提取图标';
+        }
+    }
+
+    async function handleSwitchSource() {
+        if (isLoading || !currentDomain) return;
+        var nextIndex = currentSourceIndex + 1;
+        if (nextIndex >= currentUrls.length) {
+            showMessage('已无更多源，回到第一个', false);
+            nextIndex = 0;
         }
 
-        // ========== 模式切换 ==========
-        function switchMode(mode) {
-            currentMode = mode;
-            if (mode === 'v1') {
-                modeDesc.innerText = '直接获取，速度极快，支持 PNG/JPEG/WebP';
-                modeTag.innerText = '快速模式';
-                infoNote.innerHTML = '💡 <strong>快速模式</strong>：直接获取，速度极快，支持 PNG/JPEG/WebP<br>🚀 <strong>增强模式</strong>：支持尺寸调整 + ICO 格式，通过代理获取（速度稍慢）';
-                sizeControlPanel.classList.add('hidden');
-                previewSizeLabel.innerText = v1Width && v1Height ? `${v1Width}x${v1Height}` : '—';
-                // 恢复之前的预览
-                if (v1PngBlob && v1PreviewUrl) {
-                    faviconImg.src = v1PreviewUrl;
-                    originalSizeSpan.innerText = `${v1Width} x ${v1Height}`;
-                    iconStatusSpan.innerText = '✓ 已获取 (快速模式)';
-                    downloadBtn.disabled = false;
-                } else if (v1PngBlob) {
-                    faviconImg.src = v1PreviewUrl;
-                } else {
-                    faviconImg.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%23f3f4f6'/%3E%3Ctext x='6' y='17' font-size='12' fill='%239ca3af'%3E🌐%3C/text%3E%3C/svg%3E";
-                }
+        isLoading = true;
+        switchBtn.disabled = true;
+        currentSourceIndex = nextIndex;
+        switchBtn.textContent = '↻ 换源 (' + (currentSourceIndex + 1) + '/' + currentUrls.length + ')';
+        setStatus('切换中…', 'idle');
+
+        try {
+            var blob = await fetchIconBlob(currentUrls[nextIndex]);
+            if (blob && blob.size > 40) {
+                var result = await new Promise(function(resolve) {
+                    var img = new Image();
+                    var u = URL.createObjectURL(blob);
+                    img.onload = function() { URL.revokeObjectURL(u); resolve({ blob: blob, width: img.width, height: img.height }); };
+                    img.onerror = function() { URL.revokeObjectURL(u); resolve({ blob: blob, width: 128, height: 128 }); };
+                    img.src = u;
+                });
+                result.sourceIndex = nextIndex;
+                result.sourceUrl = currentUrls[nextIndex];
+                applyResult(result);
+                showMessage('已切换到 ' + getSourceName(result.sourceUrl));
             } else {
-                modeDesc.innerText = '支持尺寸调整 + ICO 格式，通过代理获取（速度稍慢）';
-                modeTag.innerText = '增强模式';
-                infoNote.innerHTML = '💡 <strong>快速模式</strong>：直接获取，速度极快，支持 PNG/JPEG/WebP<br>🚀 <strong>增强模式</strong>：支持尺寸调整 + ICO 格式，通过代理获取（速度稍慢）';
-                sizeControlPanel.classList.remove('hidden');
-                previewSizeLabel.innerText = `${v2TargetSize}x${v2TargetSize}`;
-                if (v2ImageBlob && v2PreviewUrl) {
-                    faviconImg.src = v2PreviewUrl;
-                    originalSizeSpan.innerText = `${v2Width} x ${v2Height}`;
-                    iconStatusSpan.innerText = '✓ 已获取 (增强模式)';
-                    downloadBtn.disabled = false;
-                } else if (v2ImageBlob) {
-                    faviconImg.src = v2PreviewUrl;
-                } else {
-                    faviconImg.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%23f3f4f6'/%3E%3Ctext x='6' y='17' font-size='12' fill='%239ca3af'%3E🌐%3C/text%3E%3C/svg%3E";
-                }
+                setStatus(getSourceName(currentUrls[nextIndex]) + ' 未获取到图标', 'err');
+                showMessage(getSourceName(currentUrls[nextIndex]) + ' 未获取到图标', true);
             }
+        } catch(e) {
+            setStatus(getSourceName(currentUrls[nextIndex]) + ' 切换失败', 'err');
+            showMessage(getSourceName(currentUrls[nextIndex]) + ' 切换失败', true);
+        } finally {
+            isLoading = false;
+            switchBtn.disabled = false;
         }
+    }
 
-        // ========== 事件绑定 ==========
-        fetchBtn.addEventListener('click', handleFetchIcon);
-        downloadBtn.addEventListener('click', handleDownload);
-        siteUrlInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleFetchIcon();
-        });
+    async function handleDownload() {
+        if (!imageBlob) { showMessage('请先提取图标', true); return; }
+        var domain = extractDomain(siteUrlInput.value.trim()) || 'favicon';
+        var ext = currentFormat === 'jpeg' ? 'jpg' : currentFormat;
+        var filename = domain.replace(/\./g, '_') + '_' + targetSize + 'px.' + ext;
+        try {
+            var blob = await convertToFormat(imageBlob, currentFormat, targetSize);
+            var u = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = u; a.download = filename; a.click();
+            URL.revokeObjectURL(u);
+            showMessage('已下载 ' + filename);
+        } catch(e) { showMessage('下载失败', true); }
+    }
 
-        // 模式切换按钮
-        modeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                modeBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                switchMode(btn.getAttribute('data-mode'));
-            });
-        });
+    fetchBtn.addEventListener('click', handleFetchIcon);
+    downloadBtn.addEventListener('click', handleDownload);
+    switchBtn.addEventListener('click', handleSwitchSource);
+    siteUrlInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') handleFetchIcon(); });
 
-        // V2 尺寸控制
-        sizeSlider.addEventListener('input', (e) => {
-            v2TargetSize = parseInt(e.target.value);
-            v2UpdatePreview();
-        });
-        presetBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                v2TargetSize = parseInt(btn.getAttribute('data-size'));
-                v2UpdatePreview();
-            });
-        });
+    sizeSlider.addEventListener('input', function(e) { targetSize = parseInt(e.target.value); updatePreview(); });
+    presetBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() { targetSize = parseInt(btn.dataset.size); updatePreview(); });
+    });
 
-        // 格式切换
-        formatBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                formatBtns.forEach(b => b.classList.remove('selected'));
-                btn.classList.add('selected');
-                currentFormat = btn.getAttribute('data-format');
-            });
+    formatBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            formatBtns.forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            currentFormat = btn.dataset.format;
         });
+    });
 
-        // 自动加载示例
-        setTimeout(() => {
-            handleFetchIcon();
-        }, 300);
-    })();
+    setTimeout(handleFetchIcon, 300);
+})();
 </script>
 </body>
 </html>
