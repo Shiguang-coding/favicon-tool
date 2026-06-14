@@ -7,7 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&family=Press+Start+2P&family=Space+Mono:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='5' y='5' width='90' height='90' rx='20' fill='%23c2694a'/%3E%3Crect x='18' y='18' width='64' height='64' rx='12' fill='white'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='42' font-weight='bold' font-family='Arial' fill='%23c2694a'%3EF%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="brand/icon-light.svg">
+    <link rel="alternate icon" href="brand/favicon.ico">
+    <link rel="apple-touch-icon" href="brand/icon-180.png">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -327,6 +329,15 @@
         .header {
             margin-bottom: 2.5rem;
             position: relative;
+        }
+
+        .brand-mark {
+            width: 54px;
+            height: 54px;
+            margin-bottom: 14px;
+            border-radius: 16px;
+            display: block;
+            box-shadow: 0 14px 34px rgba(0,0,0,0.18), 0 0 0 1px var(--border-light);
         }
 
         .eyebrow {
@@ -780,6 +791,7 @@
         /* ── Responsive ── */
         @media (max-width: 480px) {
             .page { padding: 2rem 1rem; }
+            .brand-mark { width: 46px; height: 46px; margin-bottom: 12px; }
             .header h1 { font-size: 2rem; }
             .input-group { flex-direction: column; }
             .fetch-btn { padding: 0.75rem; text-align: center; }
@@ -814,6 +826,7 @@
                 <button class="theme-option" data-theme="swiss"><span class="theme-swatch" style="background:#e53935"></span><span class="theme-name">瑞士极简</span><span class="theme-check">✓</span></button>
             </div>
         </div>
+        <img class="brand-mark" src="brand/icon-light.svg" width="54" height="54" alt="Favicon 工坊 Logo">
         <div class="eyebrow">图标提取工具</div>
         <h1>Favicon <em>工坊</em></h1>
         <p class="header-sub">粘贴任意网址，提取高清图标，自由调整尺寸与格式</p>

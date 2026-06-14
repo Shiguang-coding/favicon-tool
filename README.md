@@ -16,6 +16,8 @@
 
 ## 🚀 在线使用
 
+![image-20260614140902908](https://img.shiguang666.eu.org/file/1781417348268_20260614140903862.webp)
+
 访问：[https://favicontool.shiguang666.eu.org](https://favicontool.shiguang666.eu.org)
 
 或直接下载 `index.html` 在浏览器中打开。
