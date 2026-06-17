@@ -2,7 +2,7 @@
 
 一个纯前端、隐私安全的在线工具，用于从任意网站快速提取并下载 Favicon。支持多源切换、尺寸调整、多格式导出。
 
-[![在线使用](https://img.shields.io/badge/在线使用-点击体验-brightgreen)](https://favicontool.shiguang666.eu.org)
+[![在线使用](https://img.shields.io/badge/在线使用-点击体验-brightgreen)](https://favicon.shiguang666.eu.org)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 ## ✨ 特性
